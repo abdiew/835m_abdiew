@@ -6,34 +6,24 @@
 </head>
 <body>
 	<h3>Вывод серверных переменных:</h3>
-	<table border="1" style="width: 75%">
+	<table border="1" style="width: 40%">
 		<tr>
-			<td style="width: 75%"><?php print_r($_SERVER); ?></td>
+			<td style="width: 500px"><?php print_r($_SERVER); ?></td>
 		</tr>
 	</table>
-
-	<?php
-	function power($number, $n)
-	{
-    $sum = 1;
-    for ($i = 0; $i < $n; $i++)
-        $sum *= $number;
-    return $sum;
-	}
-	?>
 	
 	<h3>Возведение числа в степень:</h3>
 	<form method="post">
-            <p>Введите число: <input type="text" name="num"></p>
-            <p>Введите степень: <input type="text" name="pv"></p>
-            <p><input type="submit" value="Посчитать" name="eq"></p>
+            <p>Введите число: <input type="text" name="chislo"></p>
+            <p>Введите степень, в которую надо возвести число: <input type="text" name="stepen"></p>
+            <p><input type="submit" value="Посчитать" name="send"></p>
         </form>
         <?php 
-            if (isset($_POST['num']) && isset($_POST['pv']))
+            if (isset($_POST['chislo']) && isset($_POST['stepen']))
             {
-                $num = $_POST['num'];
-                $pv = $_POST['pv'];
-                echo "<p>Число ".$num."  в степени ".$pv." равно ".power($num, $pv)."</p>";
+                $chislo = $_POST['chislo'];
+                $stepen = $_POST['stepen'];
+                echo "<p>Число ".$chislo."  в степени ".$stepen." равно ".power($chislo, $stepen)."</p>";
             }
         ?>
 	</form>

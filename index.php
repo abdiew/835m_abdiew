@@ -14,6 +14,7 @@ setcookie('dateVisit',date('Y-m-d H:i:s'),time()+0xFFFFFFF);
 	  	header("Location: index.php");
 	  	exit;
 	}
+	$page = "";
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -42,17 +43,27 @@ setcookie('dateVisit',date('Y-m-d H:i:s'),time()+0xFFFFFFF);
 						<td class="content_td">
 							<!-- Область основного контента сайта -->
 							<?php
+							require 'base_reg.php';
 							if (!empty($_GET['page']))
 								$page = $_GET['page'];
+							if ($page == 'reg')
+							{
+								include 'registration.php';
+								exit;
+							}
+							if (!empty($_GET['page']))
+									$page = $_GET['page'];
 							require 'auth.php';
-							if (empty($page)) {?>
+							if (empty($page)) { ?>
 								<p style="text-align: center;"><b>О Нашем проекте.</b></p>
 								<p class="textb"><b>Электро́нная библиоте́ка</b> — упорядоченная коллекция разнородных электронных документов (в том числе книг, журналов), снабжённых средствами навигации и поиска. Может быть веб-сайтом, где постепенно накапливаются различные тексты (чаще литературные, но также научные и любые другие, вплоть до компьютерных программ) и медиафайлы, каждый из которых самодостаточен и в любой момент может быть востребован читателем. Электронные библиотеки могут быть универсальными, стремящимися к наиболее широкому выбору материала (как Библиотека Максима Мошкова или Либрусек), и более специализированными, как Фундаментальная электронная библиотека или проект Сетевая Словесность, нацеленный на собирание авторов и типов текста, наиболее ярко заявляющих о себе именно в Интернете. На нашем сайте вы найдете и художественную литературу всемирно признанных авторов и научно-популярные статьи из большого количества областей науки.</p>
 								<p class="textb"> </p>
 								<p style="text-align: center;"><img src="images/image1.png" alt="Книги"></img></p>
 								<p class="textb">Форматы, в которых книги доступны для скачивания  с нашего сайта — заархивированный TXT, RTF и DOC, Mobipocket .PRC (формат для чтения книг на кпк и телефонах), FictionBook.</p>
-								<p class="textb">Дополнительно, материалы, изобилующие математическими формулами и сложными схемами, доступны в графическом формате, DjVu и PDF.</p><?php }
-								else switch($page)
+								<p class="textb">Дополнительно, материалы, изобилующие математическими формулами и сложными схемами, доступны в графическом формате, DjVu и PDF.</p>
+								<?php 
+								}
+									else switch($page)
 								{
 									case 'lr1':
 									include_once('auth.php');
@@ -62,7 +73,13 @@ setcookie('dateVisit',date('Y-m-d H:i:s'),time()+0xFFFFFFF);
 									include 'lab_rab2.php'; break;
 									case 'lr3':
 									include_once('auth.php');
-									include 'lab_rab3.php'; break;				
+									include 'lab_rab3.php'; break;	
+									case 'lr4':
+									include_once('auth.php');
+									include 'lab_rab4.php'; break;
+									case 'lr5':
+									include_once('auth.php');
+									include 'lab_rab5.php'; break;				
 									case 'catalog':
 									include_once('auth.php');
 									include 'catalog.php'; break;	
@@ -74,7 +91,10 @@ setcookie('dateVisit',date('Y-m-d H:i:s'),time()+0xFFFFFFF);
 									include 'item.php'; break;	
 									case 'edit':
 									include_once('auth.php'); 
-									include 'edit.php'; break;		
+									include 'edit.php'; break;	
+									case 'reg':
+									include_once('auth.php'); 
+									include 'registration.php'; break;
 								}		
 								?>
 							</td>

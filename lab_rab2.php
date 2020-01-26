@@ -18,7 +18,14 @@
             <p>Введите степень, в которую надо возвести число: <input type="text" name="stepen"></p>
             <p><input type="submit" value="Посчитать" name="send"></p>
         </form>
-        <?php 
+        <?php  
+        function power($number, $n)
+        {
+            $sum = 1;
+            for ($i = 0; $i < $n; $i++)
+                $sum *= $number;
+            return $sum;
+        }
             if (isset($_POST['chislo']) && isset($_POST['stepen']))
             {
                 $chislo = $_POST['chislo'];

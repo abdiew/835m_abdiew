@@ -86,8 +86,19 @@
 			exit;
 		}
 		
-		$query = "SELECT * FROM ITEMS ". $where . implode(' OR ', $conditions). $and . $condition2. " ". $order_by;
+		$login = $_SESSION['user_login'];
+		if ($login=='admin')
+		{
+			$query = "SELECT * FROM ITEMS ". $where . implode(' OR ', $conditions). $and . $condition2. " ". $order_by;
+		}
+		else 
+		{	
+			$query = "SELECT * FROM ITEMS WHERE LOGIN='$login'" . implode(' OR ', $conditions). $and . $condition2. " ". $order_by;
+		}
 		$result = mysqli_query($dbh, $query);
+
+		//$query = "SELECT * FROM ITEMS ". $where . implode(' OR ', $conditions). $and . $condition2. " ". $order_by;
+		//$result = mysqli_query($dbh, $query);
 		echo "<table border='2'><tr>
 		<th width='45%'><a href='index.php?page=catalog&sort=1&namet=$namet&type=$type'>Название книги</a></th>
 		<th width='25%'><a href='index.php?page=catalog&sort=2&namet=$namet&type=$type'>Жанр</a></th>
@@ -99,15 +110,15 @@
 			echo "
 			<tr>
 				<td>
-					<a href='index.php?page=item&id=$row[0]'>
-						$row[0]
+					<a href='index.php?page=item&id=$row[1]'>
+						$row[1]
 					</a>
 				</td>
-				<td>$row[1]</td>
 				<td>$row[2]</td>
+				<td>$row[3]</td>
 				<td>
 					<form method='POST'>
-					<input type='checkbox' name='cbs[]' value='$row[0]' />
+					<input type='checkbox' name='cbs[]' value='$row[1]' />
 				</td>
 			</tr>";
 		}

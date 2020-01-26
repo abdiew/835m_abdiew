@@ -47,7 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				}
 			}
 			$uploadlink = $file_path . $namet . '.jpg';
-			$query = "INSERT INTO ITEMS (name,genre,autor,uploadlink) VALUES ('$namet','$genre','$autor','$uploadlink')";
+			$login = $_SESSION['user_login'];
+			$query = "INSERT INTO ITEMS (name,genre,autor,uploadlink,login) VALUES ('$namet','$genre','$autor','$uploadlink','$login')";
 			mysqli_query($dbh, $query) or die ("Сбой при доступе к БД: ");
 			//header("Location: index.php?page=catalog");
 		}

@@ -24,11 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				"!0[^.]|255)[0-9]{1,3}\.){3}(?!0|255)[0-9]{1,3})(?:/[a-z0-9.,_@%&".
 				"?+=\~/-]*)?(?:#[^ '\"&<>]*)?~i",'',$autor);
 
-		if (($namet <> $row[0]) or (!empty($_FILES['uploadfile']['name'])))
+		if (($namet <> $row[1]) or (!empty($_FILES['uploadfile']['name'])))
 		{
-			if ($namet <> $row[0])
+			if ($namet <> $row[1])
 			{
-				rename($row[3], $file_path . $namet . '.jpg');
+				rename($row[4], $file_path . $namet . '.jpg');
 			}
 			if (!empty($_FILES['uploadfile']['name']))
 			{
@@ -66,19 +66,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	
 	<h2 style="margin: 10px 100px 30px 200px;">Редактирование записи</h2>
 	<form method='POST' action='index.php?page=edit&id=<?php echo $id; ?>' ENCTYPE='multipart/form-data'>			
-		<input type='text' hidden name='id' value='<?=$row[0]?>'>	
+		<input type='text' hidden name='id' value='<?=$row[1]?>'>	
 		<table>
 			<tr>
 				<th>Название книги:</th>
-				<td><input type='text' name='namet' value='<?=$row[0]?>' size="35"></td>
+				<td><input type='text' name='namet' value='<?=$row[1]?>' size="35"></td>
 			</tr>
 			<tr>
 				<th>Жанр:</th> 
-				<td><input type='text' name='genre' value='<?=$row[1]?>' size="35"></td>
+				<td><input type='text' name='genre' value='<?=$row[2]?>' size="35"></td>
 			</tr >
 			<tr>
 				<th>Автор:</th>
-				<td><input type='text' name='autor' value='<?=$row[2]?>' size="35"></td>
+				<td><input type='text' name='autor' value='<?=$row[3]?>' size="35"></td>
 			</tr>
 			<tr>
 				<th>Изображение:</th> 

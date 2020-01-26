@@ -16,16 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty($_GET['id']))
 <table border="1" style="text-align:left;" align="left" >
 	<tr>
 		<th width="25%">Название книги</th>
-		<td  ><?= $row[0] ?></td>
-		<td rowspan="4"><img src='<?= $row[3] ?> '></td>
+		<td  ><?= $row[1] ?></td>
+		<td rowspan="4"><img src='<?= $row[4] ?> '></td>
 	</tr>
 	<tr>
 		<th>Жанр</th>
-		<td width="15%"><?= $row[1] ?></td>
+		<td width="15%"><?= $row[2] ?></td>
 	</tr>
 	<tr>
 		<th>Автор</th>
-		<td width="15%"><?= $row[2] ?></td>
+		<td width="15%"><?= $row[3] ?></td>
 	</tr>
 </table>
 <br/>
